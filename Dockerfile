@@ -17,6 +17,6 @@ ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 
-RUN echo yes | android update sdk --no-ui --all --filter tools,platform-tools &&
-    echo yes | android update sdk --no-ui --all --filter build-tools-23.0.3,android-23 &&
-    echo yes | android update sdk --no-ui --all --filter extra-android-m2repository,extra-google-m2repository &&
+RUN echo yes | android update sdk --no-ui --all --filter tools,platform-tools && \
+    echo yes | android update sdk --no-ui --all --filter build-tools-23.0.3,android-23 && \
+    echo yes | android update sdk --no-ui --all --filter extra-android-m2repository,extra-google-m2repository
