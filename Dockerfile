@@ -2,8 +2,8 @@ FROM lwieske/java-8:jdk-8u92-slim
 MAINTAINER amond "amond@amond.net"
 
 # Sets language to UTF8 : this works in pretty much all cases
-ENV LANG en_US.UTF-8
-RUN locale-gen $LANG
+#ENV LANG en_US.UTF-8
+#RUN locale-gen $LANG
 
 ENV ANDROID_SDK_ZIP http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 
