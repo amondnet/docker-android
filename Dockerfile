@@ -13,7 +13,11 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y --force
 # Install Android SDK
 RUN cd /opt && wget --output-document=android-sdk.tgz --quiet http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && tar xzf android-sdk.tgz && rm -f android-sdk.tgz && chown -R root.root android-sdk-linux
 
+# Setup environment
+ENV ANDROID_HOME /opt/android-sdk-linux
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
+# Install sdk elements
 RUN echo yes | android update sdk --no-ui --all --filter tools,platform-tools --no-https
 RUN echo yes | android update sdk --no-ui --all --filter build-tools-23.0.3,android-23 && \
     echo yes | android update sdk --no-ui --all --filter extra-android-m2repository,extra-google-m2repository
