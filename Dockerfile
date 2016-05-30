@@ -1,4 +1,4 @@
-FROM lwieske/java-8:jdk-8u92-slim
+FROM java:7-jdk
 MAINTAINER amond "amond@amond.net"
 
 # Sets language to UTF8 : this works in pretty much all cases
@@ -11,8 +11,7 @@ ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 
-RUN apk add --no-cache curl bash && \
-    mkdir -p /opt && cd /opt && \
+RUN mkdir -p /opt && cd /opt && \
     wget -q ${ANDROID_SDK_ZIP} && \
     tar zxvf android-sdk_r24.4.1-linux.tgz && \
     rm android-sdk_r24.4.1-linux.tgz && \
