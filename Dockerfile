@@ -18,6 +18,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # Install sdk elements
-RUN echo yes | android update sdk --no-ui --all --filter tools,platform-tools --no-https
-RUN echo yes | android update sdk --no-ui --all --filter build-tools-23.0.3,android-23 && \
-    echo yes | android update sdk --no-ui --all --filter extra-android-m2repository,extra-google-m2repository
+# Install sdk elements
+COPY tools /opt/tools
+ENV PATH ${PATH}:/opt/tools
+RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter platform-tools,tools,build-tools-21,build-tools-21.0.1,build-tools-21.0.2,build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2,build-tools-22,build-tools-22.0.1,build-tools-23.0.2,android-21,android-22,android-23,addon-google_apis_x86-google-21,extra-android-support,extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services"]
