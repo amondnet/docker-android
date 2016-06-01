@@ -3,7 +3,6 @@ FROM ubuntu:14.04
 MAINTAINER amond "amond@amond.net"
 
 ENV DEBIAN_FRONTEND=noninteractive
-
 # Install java7
 RUN apt-get update && apt-get install -y software-properties-common && add-apt-repository -y ppa:webupd8team/java && apt-get update
 RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
@@ -23,7 +22,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 COPY tools /opt/tools
 ENV PATH ${PATH}:/opt/tools
 RUN chmod +x /opt/tools/*.sh
-RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter platform-tools,tools,build-tools-21,build-tools-21.0.1,build-tools-21.0.2,build-tools-21.1,build-tools-21.1.1,build-tools-21.1.2,build-tools-22,build-tools-22.0.1,build-tools-23.0.2,android-21,android-22,android-23,addon-google_apis_x86-google-21,extra-android-support,extra-android-m2repository,extra-google-m2repository,extra-google-google_play_services"]
+RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --force --no-ui --filter platform-tools,tools,build-tools-23.0.2,android-23,extra-android-m2repository,extra-android-m2repository,extra-google-m2repository"]
 
 # Cleaning
 RUN apt-get clean
